@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:dc="http://purl.org/dc/terms/">
+
+  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/University">
+    <rdfs:subClassOf rdf:resource="http://schema.org/Organization"/>
+    <dc:description xml:lang="en">Class representation of university as an extension (subclass) of the organization class.</dc:description>
+    <dc:description xml:lang="cs">Třída reprezentující univerzitu jako rozšíření třídy organizace.</dc:description>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
+    <rdfs:label xml:lang="en">University</rdfs:label>
+    <rdfs:label xml:lang="cs">Univerzita</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/BachelorsThesis">
+    <rdfs:subClassOf rdf:resource="http://schema.org/Thesis"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/MastersThesis">
+    <rdfs:subClassOf rdf:resource="http://schema.org/Thesis"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/DissertationThesis">
+    <rdfs:subClassOf rdf:resource="http://schema.org/Thesis"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/HabilitationThesis">
+    <rdfs:subClassOf rdf:resource="http://schema.org/Thesis"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/RigorousThesis">
+    <rdfs:subClassOf rdf:resource="http://schema.org/Thesis"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/reviewer">
+    <rdfs:subPropertyOf rdf:resource="http://schema.org/contributor"/>
+    <rdfs:domain rdf:resource="http://schema.org/Thesis"/>
+    <rdfs:range rdf:resource="http://schema.org/Person"/>
+    <dc:description xml:lang="en">Property describing who has been the reviewer of thesis, Reviewer is a specific case (subproperty) of Contributor.</dc:description>
+    <dc:description xml:lang="cs">Vlastnost popisující vztah člověka k vysokoškolské kvalifikační práci v roli oponenta, Oponent je rozšířením vlastnosti zvané Přispívající (Contributor).</dc:description>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
+    <rdfs:label xml:lang="en">Reviewer</rdfs:label>
+    <rdfs:label xml:lang="cs">Oponent</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/advisor">
+    <rdfs:subPropertyOf rdf:resource="http://schema.org/contributor"/>
+    <rdfs:domain rdf:resource="http://schema.org/Thesis"/>
+    <rdfs:range rdf:resource="http://schema.org/Person"/>
+    <dc:description xml:lang="en">Property describing who has been the advisor of thesis, Advisor is a specific case (subproperty) of Contributor.</dc:description>
+    <dc:description xml:lang="cs">Vlastnost popisující vztah člověka k vysokoškolské kvalifikační práci v roli vedoucího, Vedoucí je rozšířením vlastnosti zvané Přispívající (Contributor).</dc:description>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
+    <rdfs:label xml:lang="en">Advisor</rdfs:label>
+    <rdfs:label xml:lang="cs">Vedoucí</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/affiliated">
+    <rdfs:subPropertyOf rdf:resource="http://schema.org/member"/>
+    <rdfs:domain rdf:resource="http://schema.org/Person"/>
+    <rdfs:range rdf:resource="http://schema.org/Organization"/>
+    <dc:description xml:lang="en">Property describing possible affiliation with an Organization (University). Affiliation with an Organization is in meaning looser than being a thesis:member.</dc:description>
+    <dc:description xml:lang="cs">Vlastnost popisující existující příslušnost k Organizaci (Univerzitě). Tento vztah je významově volnější než člen (thesis:Member), pouze naznačuje možný vztah.</dc:description>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
+    <rdfs:label xml:lang="en">Affiliated</rdfs:label>
+    <rdfs:label xml:lang="cs">Příslušnost</rdfs:label>
+  </rdf:Description>
+
+</rdf:RDF>

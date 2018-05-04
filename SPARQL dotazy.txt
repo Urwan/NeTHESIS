@@ -1,0 +1,177 @@
+1) Kolik existuje záznamů prací?
+
+PREFIX schema: <http://schema.org/>
+
+SELECT (COUNT(?thesis) AS ?pocetPraci)
+WHERE {
+    Graph ?g {
+    ?thesis a schema:Thesis.
+  }
+}
+
+http://nusl.netusil.cloud/fuseki/dataset.html?tab=query&ds=/nusl#query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0A%0ASELECT+(COUNT(%3Fthesis)+AS+%3FpocetPraci)%0AWHERE+%7B%0A++++Graph+%3Fg+%7B%0A++++%3Fthesis+a+schema%3AThesis.%0A++%7D%0A%7D
+____
+2) Kterých prací dle typu bylo napsáno nejvíce?
+
+PREFIX schema: <http://schema.org/>
+PREFIX nethesis: <https://thesis.netusil.cloud/1.0/>
+
+SELECT ?ThesisType (COUNT(?ThesisType) AS ?pocetPraci )
+WHERE {
+    Graph ?g {
+    ?thesis a schema:Thesis,
+              ?ThesisType.
+    
+  }
+}
+GROUP BY ?ThesisType
+
+http://nusl.netusil.cloud/fuseki/dataset.html?tab=query&ds=/nusl#query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0APREFIX+nethesis%3A+%3Chttps%3A%2F%2Fthesis.netusil.cloud%2F1.0%2F%3E%0A%0ASELECT+%3FThesisType+(COUNT(%3FThesisType)+AS+%3FpocetPraci+)%0AWHERE+%7B%0A++++Graph+%3Fg+%7B%0A++++%3Fthesis+a+schema%3AThesis%2C%0A++++++++++++++%3FThesisType.%0A++++%0A++%7D%0A%7D%0AGROUP+BY+%3FThesisType
+
+____
+3) Kolik existuje záznamů osob?
+PREFIX schema: <http://schema.org/>
+
+SELECT (COUNT(?person) AS ?pocetLidi)
+WHERE {
+    Graph <http://nusl.netusil.cloud/fuseki/people_raw/> {
+    ?person a schema:Person.
+  }
+}
+http://nusl.netusil.cloud/fuseki/dataset.html?tab=query&ds=/nusl#query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0A%0ASELECT+(COUNT(%3Fperson)+AS+%3FpocetLidi)%0AWHERE+%7B%0A++++Graph+%3Chttp%3A%2F%2Fnusl.netusil.cloud%2Ffuseki%2Fpeople_raw%2F%3E+%7B%0A++++%3Fperson+a+schema%3APerson.%0A++%7D%0A%7D
+
+PREFIX schema: <http://schema.org/>
+
+SELECT COUNT( DISTINCT(?name) )
+WHERE {
+    Graph <http://nusl.netusil.cloud/fuseki/people_raw/> {
+    ?person a schema:Person;
+            schema:name ?name.
+  }
+}
+http://nusl.netusil.cloud/fuseki/dataset.html?tab=query&ds=/nusl#query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0A%0ASELECT+COUNT(+DISTINCT(%3Fname)+)%0AWHERE+%7B%0A++++Graph+%3Chttp%3A%2F%2Fnusl.netusil.cloud%2Ffuseki%2Fpeople_raw%2F%3E+%7B%0A++++%3Fperson+a+schema%3APerson%3B%0A++++++++++++schema%3Aname+%3Fname.%0A++%7D%0A%7D
+____
+4) Která instituce publikovala nejvíce prací?
+
+PREFIX schema: <http://schema.org/>
+PREFIX nethesis: <https://thesis.netusil.cloud/1.0/>
+
+SELECT ?organizationName (COUNT(?organization) AS ?pocetVyskytu )
+WHERE {
+    Graph ?g {
+    ?thesis a schema:Thesis;
+            schema:publisher ?organization.
+    ?organization a schema:CollegeOrUniversity;
+                  schema:name ?organizationName.
+  }
+}
+GROUP BY ?organizationName
+ORDER BY DESC(?pocetVyskytu)
+
+http://nusl.netusil.cloud/fuseki/dataset.html?tab=query&ds=/nusl#query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0APREFIX+nethesis%3A+%3Chttps%3A%2F%2Fthesis.netusil.cloud%2F1.0%2F%3E%0A%0ASELECT+%3ForganizationName+(COUNT(%3Forganization)+AS+%3FpocetVyskytu+)%0AWHERE+%7B%0A++++Graph+%3Fg+%7B%0A++++%3Fthesis+a+schema%3AThesis%3B%0A++++++++++++schema%3Apublisher+%3Forganization.%0A++++%3Forganization+a+schema%3ACollegeOrUniversity%3B%0A++++++++++++++++++schema%3Aname+%3ForganizationName.%0A++%7D%0A%7D%0AGROUP+BY+%3ForganizationName%0AORDER+BY+DESC(%3FpocetVyskytu)
+____
+5) Jaké je nejčastěji využívané klíčové slovo? A kolikrát bylo využito?
+
+PREFIX schema: <http://schema.org/>
+PREFIX nethesis: <https://thesis.netusil.cloud/1.0/>
+
+SELECT ?keyword (COUNT(?keyword) AS ?pocetVyskytu )
+WHERE {
+    Graph ?g {
+    ?thesis a schema:Thesis;
+            schema:keywords ?keyword.
+  }
+}
+GROUP BY ?keyword
+ORDER BY DESC(?pocetVyskytu)
+LIMIT 50
+
+http://nusl.netusil.cloud/fuseki/dataset.html?tab=query&ds=/nusl#query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0APREFIX+nethesis%3A+%3Chttps%3A%2F%2Fthesis.netusil.cloud%2F1.0%2F%3E%0A%0ASELECT+%3Fkeyword+(COUNT(%3Fkeyword)+AS+%3FpocetVyskytu+)%0AWHERE+%7B%0A++++Graph+%3Fg+%7B%0A++++%3Fthesis+a+schema%3AThesis%3B%0A++++++++++++schema%3Akeywords+%3Fkeyword.%0A++%7D%0A%7D%0AGROUP+BY+%3Fkeyword%0AORDER+BY+DESC(%3FpocetVyskytu)%0ALIMIT+50
+____
+6) Byly identifikovány rozdílné stejnojmenné osoby?
+
+PREFIX schema: <http://schema.org/>
+
+SELECT DISTINCT ?name
+WHERE {
+    Graph <http://nusl.netusil.cloud/fuseki/people_raw/> {
+    ?person a schema:Person;
+            schema:name ?name.
+    ?person2 a schema:Person;
+            schema:name ?name.
+    FILTER(?person != ?person2)
+  }
+}
+LIMIT 25
+
+http://nusl.netusil.cloud/fuseki/dataset.html?tab=query&ds=/nusl#query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0A%0ASELECT+DISTINCT+%3Fname%0AWHERE+%7B%0A++++Graph+%3Chttp%3A%2F%2Fnusl.netusil.cloud%2Ffuseki%2Fpeople_raw%2F%3E+%7B%0A++++%3Fperson+a+schema%3APerson%3B%0A++++++++++++schema%3Aname+%3Fname.%0A++++%3Fperson2+a+schema%3APerson%3B%0A++++++++++++schema%3Aname+%3Fname.%0A++++FILTER(%3Fperson+!%3D+%3Fperson2)%0A++%7D%0A%7D%0ALIMIT+25
+
+____
+7) Působí osoba jako vedoucí či oponent v rámci jedné instituce?
+8) Jsou práce s podobnými klíčovými slovy v rámci jedné instituce častěji vedeny stejnými lidmi?
+
+____
+9) Jsou nějaké časté kombinace vedoucích a oponentů?
+
+PREFIX schema: <http://schema.org/>
+PREFIX nethesis: <https://thesis.netusil.cloud/1.0/>
+
+SELECT DISTINCT ?pname ?pname2
+WHERE {
+  Graph ?g {
+  ?thesis nethesis:reviewer ?person11.
+  ?thesis nethesis:advisor ?person12.
+  ?thesis2 nethesis:reviewer ?person21.
+  ?thesis2 nethesis:advisor ?person22.
+    FILTER ( STR(?thesis) < STR(?thesis2))
+  GRAPH <http://nusl.netusil.cloud/fuseki/people_raw/>{
+  ?person11 schema:name ?pname;
+           a schema:Person.
+  ?person21 schema:name ?pname;
+           a schema:Person.
+  ?person12 schema:name ?pname2;
+           a schema:Person.
+  ?person22 schema:name ?pname2;
+           a schema:Person.
+      FILTER(?pname != ?pname2)
+  }
+    
+}
+}
+LIMIT 5
+
+http://nusl.netusil.cloud/fuseki/dataset.html?tab=query&ds=/nusl#query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0APREFIX+nethesis%3A+%3Chttps%3A%2F%2Fthesis.netusil.cloud%2F1.0%2F%3E%0A%0ASELECT+DISTINCT+%3Fpname+%3Fpname2%0AWHERE+%7B%0A++Graph+%3Fg+%7B%0A++%3Fthesis+nethesis%3Areviewer+%3Fperson11.%0A++%3Fthesis+nethesis%3Aadvisor+%3Fperson12.%0A++%3Fthesis2+nethesis%3Areviewer+%3Fperson21.%0A++%3Fthesis2+nethesis%3Aadvisor+%3Fperson22.%0A++++FILTER+(+STR(%3Fthesis)+%3C+STR(%3Fthesis2))%0A++GRAPH+%3Chttp%3A%2F%2Fnusl.netusil.cloud%2Ffuseki%2Fpeople_raw%2F%3E%7B%0A++%3Fperson11+schema%3Aname+%3Fpname%3B%0A+++++++++++a+schema%3APerson.%0A++%3Fperson21+schema%3Aname+%3Fpname%3B%0A+++++++++++a+schema%3APerson.%0A++%3Fperson12+schema%3Aname+%3Fpname2%3B%0A+++++++++++a+schema%3APerson.%0A++%3Fperson22+schema%3Aname+%3Fpname2%3B%0A+++++++++++a+schema%3APerson.%0A++++++FILTER(%3Fpname+!%3D+%3Fpname2)%0A++%7D%0A++++%0A%7D%0A%7D%0ALIMIT+5
+
+____
+10) Jsou nějaké kombinace vedoucích a oponentů přítomny obousměrně?
+
+PREFIX schema: <http://schema.org/>
+PREFIX nethesis: <https://thesis.netusil.cloud/1.0/>
+
+SELECT ?pname ?pname2
+WHERE {
+  Graph ?g {
+  ?thesis nethesis:reviewer ?person11.
+  ?thesis nethesis:advisor ?person12.
+  ?thesis2 nethesis:reviewer ?person22.
+  ?thesis2 nethesis:advisor ?person21.
+    FILTER ( STR(?thesis) < STR(?thesis2))
+  GRAPH <http://nusl.netusil.cloud/fuseki/people_raw/>{
+  ?person11 schema:name ?pname;
+           a schema:Person.
+  ?person21 schema:name ?pname;
+           a schema:Person.
+  ?person12 schema:name ?pname2;
+           a schema:Person.
+  ?person22 schema:name ?pname2;
+           a schema:Person.
+      FILTER(?pname != ?pname2)
+  }
+    
+}
+}
+LIMIT 1
+
+http://nusl.netusil.cloud/fuseki/dataset.html?tab=query&ds=/nusl#query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0APREFIX+nethesis%3A+%3Chttps%3A%2F%2Fthesis.netusil.cloud%2F1.0%2F%3E%0A%0ASELECT+%3Fpname+%3Fpname2%0AWHERE+%7B%0A++Graph+%3Fg+%7B%0A++%3Fthesis+nethesis%3Areviewer+%3Fperson11.%0A++%3Fthesis+nethesis%3Aadvisor+%3Fperson12.%0A++%3Fthesis2+nethesis%3Areviewer+%3Fperson22.%0A++%3Fthesis2+nethesis%3Aadvisor+%3Fperson21.%0A++++FILTER+(+STR(%3Fthesis)+%3C+STR(%3Fthesis2))%0A++GRAPH+%3Chttp%3A%2F%2Fnusl.netusil.cloud%2Ffuseki%2Fpeople_raw%2F%3E%7B%0A++%3Fperson11+schema%3Aname+%3Fpname%3B%0A+++++++++++a+schema%3APerson.%0A++%3Fperson21+schema%3Aname+%3Fpname%3B%0A+++++++++++a+schema%3APerson.%0A++%3Fperson12+schema%3Aname+%3Fpname2%3B%0A+++++++++++a+schema%3APerson.%0A++%3Fperson22+schema%3Aname+%3Fpname2%3B%0A+++++++++++a+schema%3APerson.%0A++++++FILTER(%3Fpname+!%3D+%3Fpname2)%0A++%7D%0A++++%0A%7D%0A%7D%0ALIMIT+1
+
+

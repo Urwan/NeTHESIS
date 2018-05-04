@@ -1,0 +1,94 @@
+﻿@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+
+<https://thesis.netusil.cloud/1.0/>
+	dcterms:issued "2018-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	dcterms:modified "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    dcterms:title "Netušil's Vocabulary of NUŠL, Version 1.0"@en .
+	dcterms:title "Netušilův Slovník NUŠL, Verze 1.0"@cs .
+	
+<https://thesis.netusil.cloud/1.0/BachelorsThesis>
+	rdfs:subClassOf schema:Thesis ;
+	dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	rdfs:label "Bachelors thesis"@en ;
+	rdfs:label "Bakalářská práce"@cs .
+
+<https://thesis.netusil.cloud/1.0/MastersThesis>
+	rdfs:subClassOf schema:Thesis ;
+	dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	rdfs:label "Masters thesis"@en ;
+	rdfs:label "Diplomová práce"@cs .
+
+<https://thesis.netusil.cloud/1.0/DissertationThesis>
+	rdfs:subClassOf schema:Thesis ;
+	dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	rdfs:label "Dissertation thesis"@en ;
+	rdfs:label "Disertační práce"@cs .
+
+<https://thesis.netusil.cloud/1.0/HabilitationThesis>
+	rdfs:subClassOf schema:Thesis ;
+	dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	rdfs:label "Habilitation thesis"@en ;
+	rdfs:label "Habilitační práce"@cs .	
+	
+<https://thesis.netusil.cloud/1.0/RigorousThesis>
+	rdfs:subClassOf schema:Thesis ;
+	dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	rdfs:label "Rigorous thesis"@en ;
+	rdfs:label "Rigorózní práce"@cs .
+	
+<https://thesis.netusil.cloud/1.0/UniversityDepartment>
+	rdfs:subClassOf schema:CollegeOrUniversity ;
+	dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	rdfs:label "School Faculty"@en ;
+	rdfs:label "Fakulta či ústav"@cs .
+
+
+<https://thesis.netusil.cloud/1.0/UniversityDiscipline>
+	a rdfs:Class ;
+	dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	rdfs:label "School Faculty"@en ;
+	rdfs:label "Fakulta či ústav"@cs .
+
+<https://thesis.netusil.cloud/1.0/reviewer>
+	rdfs:subPropertyOf schema:contributor ;
+	rdfs:domain schema:Thesis ;
+	rdfs:range schema:Person ;
+	dcterms:description "Property describing who has been the reviewer of thesis, Reviewer is a specific case (subproperty) of Contributor."@en ;
+	dcterms:description "Vlastnost popisující vztah člověka k vysokoškolské kvalifikační práci v roli oponenta, Oponent je rozšířením vlastnosti zvané Přispívající (Contributor)."@cs ;
+    dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	rdfs:label "Reviewer"@en ;
+	rdfs:label "Oponent"@cs .
+		
+<https://thesis.netusil.cloud/1.0/advisor>
+	rdfs:subPropertyOf schema:contributor ;
+	rdfs:domain schema:Thesis ;
+	rdfs:range schema:Person ;
+	dcterms:description "Property describing who has been the advisor of thesis, Advisor is a specific case (subproperty) of Contributor."@en ;
+	dcterms:description "Vlastnost popisující vztah člověka k vysokoškolské kvalifikační práci v roli vedoucího, Vedoucí je rozšířením vlastnosti zvané Přispívající (Contributor)."@cs ;
+    dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	rdfs:label "Advisor"@en ;
+	rdfs:label "Vedoucí"@cs .
+	
+<https://thesis.netusil.cloud/1.0/affiliated>
+	rdfs:subPropertyOf schema:member ;
+	rdfs:domain schema:Person ;
+	rdfs:range schema:Organization ;
+	dcterms:description "Property describing possible affiliation with an Organization (University). Affiliation with an Organization is in meaning looser than being a thesis:member."@en ;
+	dcterms:description "Vlastnost popisující existující příslušnost k Organizaci (Univerzitě). Tento vztah je významově volnější než člen (thesis:Member), pouze naznačuje možný vztah."@cs ;
+    dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	rdfs:label "Affiliated"@en ;
+	rdfs:label "Příslušnost"@cs .
+	
+<https://thesis.netusil.cloud/1.0/hasFieldOfStudy>
+	rdfs:domain schema:Organization ;
+	rdfs:range <https://thesis.netusil.cloud/1.0/UniversityDiscipline> ;
+	dcterms:description "."@en ;
+	dcterms:description "."@cs ;
+    dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	rdfs:label ""@en ;
+	rdfs:label ""@cs .
