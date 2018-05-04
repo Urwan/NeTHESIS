@@ -45,7 +45,7 @@
     <rdfs:label xml:lang="cs">Rigorózní práce</rdfs:label>
   </rdf:Description>
 
-  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/UniversityDepartment">
+  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/Department">
     <rdfs:subClassOf rdf:resource="http://schema.org/CollegeOrUniversity"/>
     <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
     <rdfs:label xml:lang="en">Faculty of Education</rdfs:label>

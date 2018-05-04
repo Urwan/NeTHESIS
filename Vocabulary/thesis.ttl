@@ -41,7 +41,7 @@
 	rdfs:label "Rigorous thesis"@en ;
 	rdfs:label "Rigorózní práce"@cs .
 	
-<https://thesis.netusil.cloud/1.0/UniversityDepartment>
+<https://thesis.netusil.cloud/1.0/Department>
 	rdfs:subClassOf schema:CollegeOrUniversity ;
 	dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	rdfs:label "Faculty of Education"@en ;
