@@ -1,36 +1,62 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-         xmlns:dc="http://purl.org/dc/terms/">
+         xmlns:dc="http://purl.org/dc/terms/"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
-  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/University">
-    <rdfs:subClassOf rdf:resource="http://schema.org/Organization"/>
-    <dc:description xml:lang="en">Class representation of university as an extension (subclass) of the organization class.</dc:description>
-    <dc:description xml:lang="cs">Třída reprezentující univerzitu jako rozšíření třídy organizace.</dc:description>
-    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
-    <rdfs:label xml:lang="en">University</rdfs:label>
-    <rdfs:label xml:lang="cs">Univerzita</rdfs:label>
+  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/">
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-01-01</dc:issued>
+    <dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:modified>
+    <dc:title xml:lang="en">Netušil's Vocabulary of NUŠL, Version 1.0</dc:title>
+    <dc:title xml:lang="cs">Netušilův Slovník NUŠL, Verze 1.0</dc:title>
   </rdf:Description>
 
   <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/BachelorsThesis">
     <rdfs:subClassOf rdf:resource="http://schema.org/Thesis"/>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
+    <rdfs:label xml:lang="en">Bachelors thesis</rdfs:label>
+    <rdfs:label xml:lang="cs">Bakalářská práce</rdfs:label>
   </rdf:Description>
 
   <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/MastersThesis">
     <rdfs:subClassOf rdf:resource="http://schema.org/Thesis"/>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
+    <rdfs:label xml:lang="en">Masters thesis</rdfs:label>
+    <rdfs:label xml:lang="cs">Diplomová práce</rdfs:label>
   </rdf:Description>
 
   <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/DissertationThesis">
     <rdfs:subClassOf rdf:resource="http://schema.org/Thesis"/>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
+    <rdfs:label xml:lang="en">Dissertation thesis</rdfs:label>
+    <rdfs:label xml:lang="cs">Disertační práce</rdfs:label>
   </rdf:Description>
 
   <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/HabilitationThesis">
     <rdfs:subClassOf rdf:resource="http://schema.org/Thesis"/>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
+    <rdfs:label xml:lang="en">Habilitation thesis</rdfs:label>
+    <rdfs:label xml:lang="cs">Habilitační práce</rdfs:label>
   </rdf:Description>
 
   <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/RigorousThesis">
     <rdfs:subClassOf rdf:resource="http://schema.org/Thesis"/>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
+    <rdfs:label xml:lang="en">Rigorous thesis</rdfs:label>
+    <rdfs:label xml:lang="cs">Rigorózní práce</rdfs:label>
   </rdf:Description>
+
+  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/UniversityDepartment">
+    <rdfs:subClassOf rdf:resource="http://schema.org/CollegeOrUniversity"/>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
+    <rdfs:label xml:lang="en">Faculty of Education</rdfs:label>
+    <rdfs:label xml:lang="cs">Fakulta či ústav</rdfs:label>
+  </rdf:Description>
+
+  <rdfs:Class rdf:about="https://thesis.netusil.cloud/1.0/UniversityDiscipline">
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
+    <rdfs:label xml:lang="en">Discipline</rdfs:label>
+    <rdfs:label xml:lang="cs">Studijní obor</rdfs:label>
+  </rdfs:Class>
 
   <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/reviewer">
     <rdfs:subPropertyOf rdf:resource="http://schema.org/contributor"/>
@@ -63,6 +89,16 @@
     <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
     <rdfs:label xml:lang="en">Affiliated</rdfs:label>
     <rdfs:label xml:lang="cs">Příslušnost</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="https://thesis.netusil.cloud/1.0/hasFieldOfStudy">
+    <rdfs:domain rdf:resource="http://schema.org/Organization"/>
+    <rdfs:range rdf:resource="https://thesis.netusil.cloud/1.0/UniversityDiscipline"/>
+    <dc:description xml:lang="en">Property for describing fact of an organization (generalization of university class) having a field of study.</dc:description>
+    <dc:description xml:lang="cs">Vlastnost popisující situaci, kdy organizace (generalizace třídy univerzity) má studijní obor.</dc:description>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-01</dc:issued>
+    <rdfs:label xml:lang="en">Has field of study</rdfs:label>
+    <rdfs:label xml:lang="cs">Vyučuje obor</rdfs:label>
   </rdf:Description>
 
 </rdf:RDF>

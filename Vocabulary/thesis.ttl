@@ -8,7 +8,7 @@
 <https://thesis.netusil.cloud/1.0/>
 	dcterms:issued "2018-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	dcterms:modified "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
-    dcterms:title "Netušil's Vocabulary of NUŠL, Version 1.0"@en .
+    dcterms:title "Netušil's Vocabulary of NUŠL, Version 1.0"@en ;
 	dcterms:title "Netušilův Slovník NUŠL, Verze 1.0"@cs .
 	
 <https://thesis.netusil.cloud/1.0/BachelorsThesis>
@@ -44,15 +44,14 @@
 <https://thesis.netusil.cloud/1.0/UniversityDepartment>
 	rdfs:subClassOf schema:CollegeOrUniversity ;
 	dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
-	rdfs:label "School Faculty"@en ;
+	rdfs:label "Faculty of Education"@en ;
 	rdfs:label "Fakulta či ústav"@cs .
-
 
 <https://thesis.netusil.cloud/1.0/UniversityDiscipline>
 	a rdfs:Class ;
 	dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
-	rdfs:label "School Faculty"@en ;
-	rdfs:label "Fakulta či ústav"@cs .
+	rdfs:label "Discipline"@en ;
+	rdfs:label "Studijní obor"@cs .
 
 <https://thesis.netusil.cloud/1.0/reviewer>
 	rdfs:subPropertyOf schema:contributor ;
@@ -87,8 +86,8 @@
 <https://thesis.netusil.cloud/1.0/hasFieldOfStudy>
 	rdfs:domain schema:Organization ;
 	rdfs:range <https://thesis.netusil.cloud/1.0/UniversityDiscipline> ;
-	dcterms:description "."@en ;
-	dcterms:description "."@cs ;
+	dcterms:description "Property for describing fact of an organization (generalization of university class) having a field of study."@en ;
+	dcterms:description "Vlastnost popisující situaci, kdy organizace (generalizace třídy univerzity) má studijní obor."@cs ;
     dcterms:issued "2018-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
-	rdfs:label ""@en ;
-	rdfs:label ""@cs .
+	rdfs:label "Has field of study"@en ;
+	rdfs:label "Vyučuje obor"@cs .
